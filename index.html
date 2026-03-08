@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bukukita - Marketplace Buku Digital</title>
+    <style>
+      /* CSS Reset & Variables */
+      :root {
+        --primary-color: #2563eb;
+        --primary-hover: #1d4ed8;
+        --secondary-color: #f59e0b;
+        --text-main: #1e293b;
+        --text-light: #64748b;
+        --bg-body: #f8fafc;
+        --bg-card: #ffffff;
+        --border-color: #e2e8f0;
+        --font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font-family);
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* Navigation */
+      nav {
+        background-color: var(--bg-card);
+        padding: 1rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        font-weight: 500;
+        color: var(--text-light);
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-color);
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 6rem 5%;
+        text-align: center;
+        background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+      }
+
+      .badge-dev {
+        display: inline-block;
+        background-color: #fef3c7;
+        color: #b45309;
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+        color: #0f172a;
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        color: var(--text-light);
+        max-width: 600px;
+        margin: 0 auto 2rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-hover);
+      }
+
+      /* How it Works */
+      .how-it-works {
+        padding: 5rem 5%;
+        background-color: var(--bg-card);
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .steps-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        text-align: center;
+      }
+
+      .step-card {
+        padding: 2rem;
+        border-radius: 1rem;
+        background-color: var(--bg-body);
+        border: 1px solid var(--border-color);
+      }
+
+      .step-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .step-card h3 {
+        margin-bottom: 0.5rem;
+      }
+
+      .step-card p {
+        color: var(--text-light);
+        font-size: 0.9rem;
+      }
+
+      /* Catalog Section */
+      .catalog {
+        padding: 5rem 5%;
+      }
+
+      .catalog-info {
+        text-align: center;
+        margin-bottom: 3rem;
+        color: var(--text-light);
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .product-card {
+        background-color: var(--bg-card);
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+        border: 1px solid var(--border-color);
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .product-image {
+        width: 100%;
+        height: 200px;
+        background-color: #cbd5e1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #64748b;
+        font-style: italic;
+      }
+
+      .product-content {
+        padding: 1.5rem;
+      }
+
+      .product-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .product-author {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+
+      .product-price {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+      }
+
+      .btn-buy {
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #0f172a;
+        color: #f8fafc;
+        padding: 4rem 5% 2rem;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .footer-col h4 {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+        color: white;
+      }
+
+      .footer-col p,
+      .footer-col a {
+        color: #94a3b8;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      .footer-col a:hover {
+        color: white;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid #334155;
+        color: #94a3b8;
+        font-size: 0.9rem;
+      }
+
+      /* Modal Checkout (Simulasi) */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+
+      .modal-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .modal-content {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        width: 90%;
+        max-width: 400px;
+        text-align: center;
+        position: relative;
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 1rem;
+        right: 1.5rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--text-light);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.25rem;
+        }
+        .nav-links {
+          display: none; /* Sembunyikan di mobile untuk kesederhanaan sementara */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigasi -->
+    <nav>
+      <div class="logo">
+        <svg
+          width="32"
+          height="32"
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <!-- Spine Buku (Sisi kiri huruf B) -->
+          <rect
+            x="4"
+            y="4"
+            width="8"
+            height="32"
+            rx="2"
+            fill="var(--primary-color)"
+          />
+          <!-- Bagian Bawah Huruf B (Lembaran Buku) -->
+          <path
+            d="M 10 20 H 28 C 32.4 20 36 23.6 36 28 C 36 32.4 32.4 36 28 36 H 10 V 20 Z"
+            fill="var(--primary-color)"
+          />
+          <!-- Bagian Atas Huruf B dengan Potongan Lipatan -->
+          <path
+            d="M 10 4 H 24 L 32 12 V 16 C 32 18.2 30.2 20 28 20 H 10 V 4 Z"
+            fill="var(--primary-color)"
+          />
+          <!-- Aksen Lipatan Halaman (Warna Sekunder/Orange) -->
+          <path d="M 24 4 L 32 12 L 24 12 Z" fill="var(--secondary-color)" />
+        </svg>
+        Bukukita
+      </div>
+      <div class="nav-links">
+        <a href="#beranda">Beranda</a>
+        <a href="#cara-kerja">Cara Kerja</a>
+        <a href="#katalog">Katalog Buku</a>
+        <a href="#kontak">Kontak</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="hero">
+      <span class="badge-dev">🚧 Aplikasi Mobile Dalam Tahap Pengembangan</span>
+      <h1>Beli di Web, Baca Eksklusif di Genggaman Anda</h1>
+      <p>
+        Marketplace buku digital terlengkap. Lakukan transaksi aman melalui
+        website kami, dan nikmati pengalaman membaca terbaik melalui aplikasi
+        mobile Bukukita (Segera Hadir).
+      </p>
+      <a href="#katalog" class="btn btn-primary">Lihat Katalog Buku</a>
+    </section>
+
+    <!-- Cara Kerja Section -->
+    <section id="cara-kerja" class="how-it-works">
+      <h2 class="section-title">Bagaimana Cara Kerjanya?</h2>
+      <div class="steps-container">
+        <div class="step-card">
+          <div class="step-icon">🛒</div>
+          <h3>1. Pilih Buku</h3>
+          <p>
+            Cari ebook favorit Anda dari berbagai kategori di website Bukukita.
+          </p>
+        </div>
+        <div class="step-card">
+          <div class="step-icon">💳</div>
+          <h3>2. Pembayaran Aman</h3>
+          <p>
+            Selesaikan pembayaran dengan berbagai metode (Transfer, E-Wallet,
+            QRIS).
+          </p>
+        </div>
+        <div class="step-card">
+          <div class="step-icon">📱</div>
+          <h3>3. Buka Aplikasi</h3>
+          <p>
+            Download aplikasi Bukukita di smartphone Anda (Dalam pengembangan).
+          </p>
+        </div>
+        <div class="step-card">
+          <div class="step-icon">📖</div>
+          <h3>4. Mulai Membaca</h3>
+          <p>
+            Login ke aplikasi dan buku Anda siap dibaca kapan saja, di mana
+            saja.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Katalog Section -->
+    <section id="katalog" class="catalog">
+      <h2 class="section-title">Katalog Buku (Preview)</h2>
+      <p class="catalog-info">
+        Berikut adalah contoh buku yang akan tersedia di ekosistem kami.
+      </p>
+
+      <div class="products-grid">
+        <!-- Produk 1 -->
+        <div class="product-card">
+          <div class="product-image">[Cover Buku Fiksi]</div>
+          <div class="product-content">
+            <h3 class="product-title">Senja di Jakarta</h3>
+            <p class="product-author">Oleh: Penulis Fiksi</p>
+            <div class="product-price">Rp 65.000</div>
+            <button class="btn btn-primary btn-buy" onclick="openModal()">
+              Beli Sekarang
+            </button>
+          </div>
+        </div>
+
+        <!-- Produk 2 -->
+        <div class="product-card">
+          <div class="product-image">[Cover Buku Bisnis]</div>
+          <div class="product-content">
+            <h3 class="product-title">Strategi Startup 101</h3>
+            <p class="product-author">Oleh: Pakar Bisnis</p>
+            <div class="product-price">Rp 120.000</div>
+            <button class="btn btn-primary btn-buy" onclick="openModal()">
+              Beli Sekarang
+            </button>
+          </div>
+        </div>
+
+        <!-- Produk 3 -->
+        <div class="product-card">
+          <div class="product-image">[Cover Self Improvement]</div>
+          <div class="product-content">
+            <h3 class="product-title">Seni Menata Waktu</h3>
+            <p class="product-author">Oleh: Motivator</p>
+            <div class="product-price">Rp 85.000</div>
+            <button class="btn btn-primary btn-buy" onclick="openModal()">
+              Beli Sekarang
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer & Legal Info -->
+    <footer id="kontak">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Bukukita</h4>
+          <p>
+            Platform marketplace buku digital masa depan yang melindungi hak
+            cipta penulis dan memberikan kenyamanan bagi pembaca.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Informasi Kontak</h4>
+          <p>📧 admin@santrikita.com</p>
+          <p>📱 WhatsApp: +62 812-3316-8593</p>
+        </div>
+        <div class="footer-col">
+          <h4>Legalitas</h4>
+          <a href="#syarat">Syarat & Ketentuan (TOS)</a>
+          <a href="#privasi">Kebijakan Privasi</a>
+          <a href="#refund">Kebijakan Pengembalian (Refund)</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Bukukita. Seluruh Hak Cipta Dilindungi.</p>
+      </div>
+    </footer>
+
+    <!-- Modal Simulasi Payment -->
+    <div class="modal-overlay" id="paymentModal">
+      <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div style="font-size: 3rem; margin-bottom: 1rem">🔒</div>
+        <h3 style="margin-bottom: 1rem; color: var(--text-main)">
+          Sistem Pembayaran Terintegrasi
+        </h3>
+        <p
+          style="
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+          "
+        >
+          Tombol ini nantinya akan memanggil Pop-up Payment Gateway
+          (Midtrans/Xendit/Stripe) untuk memproses transaksi pengguna secara
+          aman.
+        </p>
+        <button class="btn btn-primary" onclick="closeModal()">
+          Tutup Simulasi
+        </button>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      // Smooth scrolling untuk navigasi
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Fungsi Modal
+      const modal = document.getElementById("paymentModal");
+
+      function openModal() {
+        modal.classList.add("active");
+        // Mencegah scroll pada body saat modal terbuka
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        modal.classList.remove("active");
+        // Mengembalikan scroll pada body
+        document.body.style.overflow = "auto";
+      }
+
+      // Menutup modal jika user klik di luar kotak modal
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          closeModal();
+        }
+      };
+    </script>
+  </body>
+</html>

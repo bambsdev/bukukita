@@ -1,0 +1,29 @@
+<svg
+          width="32"
+          height="32"
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <!-- Spine Buku (Sisi kiri huruf B) -->
+          <rect
+            x="4"
+            y="4"
+            width="8"
+            height="32"
+            rx="2"
+            fill="#1d4ed8"
+          />
+          <!-- Bagian Bawah Huruf B (Lembaran Buku) -->
+          <path
+            d="M 10 20 H 28 C 32.4 20 36 23.6 36 28 C 36 32.4 32.4 36 28 36 H 10 V 20 Z"
+            fill="#1d4ed8"
+          />
+          <!-- Bagian Atas Huruf B dengan Potongan Lipatan -->
+          <path
+            d="M 10 4 H 24 L 32 12 V 16 C 32 18.2 30.2 20 28 20 H 10 V 4 Z"
+            fill="#1d4ed8"
+          />
+          <!-- Aksen Lipatan Halaman (Warna Sekunder/Orange) -->
+          <path d="M 24 4 L 32 12 L 24 12 Z" fill="#f59e0b" />
+        </svg>
