@@ -1,9 +1,0 @@
- <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Orang Kiri / Halaman Kiri -->
-                <circle cx="13" cy="10" r="4.5" fill="#2563eb"/>
-                <path d="M 20 34 C 12 34 4 30 4 30 V 20 C 4 16 9 14 13 14 C 17 14 20 18 20 20 V 34 Z" fill="#2563eb"/>
-                
-                <!-- Orang Kanan / Halaman Kanan -->
-                <circle cx="27" cy="10" r="4.5" fill="#f59e0b"/>
-                <path d="M 20 34 C 28 34 36 30 36 30 V 20 C 36 16 31 14 27 14 C 23 14 20 18 20 20 V 34 Z" fill="#f59e0b"/>
-            </svg>
